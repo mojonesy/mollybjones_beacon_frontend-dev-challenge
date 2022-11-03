@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import styles from '../styles/Home.module.css'
 import Logo from '../assets/Logo';
 import SearchBar from '../components/SearchBar';
+import ErrorModal from '../components/ErrorModal';
 
 
 /* fetch data */
@@ -16,21 +17,32 @@ export async function getStaticProps() {
   }
 }
 
+
+
 /* Home component */
 export default function Home({ schools }) {
-
+  const [error, setError] = useState(null);
+  const [showModal, setShowModal] = useState(false);
   const [query, setQuery] = useState('');
   const [school, setSchool] = useState([]);
 
+  /* search change handlers */
   const handleChange = ({ target }) => {
     setQuery(target.value);
   }
-
   const handleKeyDown = (e) => {
-    if (e.key === 'Enter') {
-      console.log(query);
+    if (e.key === 'Enter' || e.key === 'Return') {
+      const found = schools.schools.filter((school) => {
+        if (school.name.includes(query)) {
+          setSchool(school.name);
+        } else {
+          setError('School not found. Try another search.');
+          setShowModal(true);
+        }
+      });
     }
   }
+
 
   return (
     <div>
@@ -49,6 +61,16 @@ export default function Home({ schools }) {
         handleChange={handleChange}
         handleKeyDown={handleKeyDown} 
       />
+
+      {/* Error modal shows if school cannot be found */}
+      {showModal === true &&
+        <ErrorModal
+          styles={styles}
+          error={error}
+          setError={setError}
+          setShowModal={setShowModal}
+        />
+      } 
 
       <div className={styles.mainListContainer}>
         {/* List */}
