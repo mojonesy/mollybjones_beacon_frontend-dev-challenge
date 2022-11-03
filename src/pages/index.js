@@ -33,9 +33,12 @@ export default function Home({ schools }) {
           <div className={styles.eyeglass}>
             <Search />
           </div>
-          <div className={styles.searchtext}>
-            Search for your school....
-          </div>
+            <input 
+              className={styles.searchText}
+              type='text' 
+              id='search' 
+              name='search'
+              placeholder='Search for your school....'/>
         </div>
         <div className={styles.searchbarspan}></div>
 
