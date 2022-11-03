@@ -1,8 +1,10 @@
+
 import styles from '../styles/Home.module.css'
 import Logo from '../assets/Logo';
 import Search from '../assets/Search';
 
 export default function Home() {
+
 
   return (
     <div className={styles.container}>
@@ -29,6 +31,7 @@ export default function Home() {
         <div className={styles.searchbarspan}></div>
 
         {/* List */}
+        
       </div>
 
     </div>
