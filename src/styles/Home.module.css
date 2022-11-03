@@ -50,12 +50,14 @@
 
 .main {
     position: absolute;
-    border: 2px solid #000;
-    max-width: 412px;
-    max-height: 550px;
-    top: 24%;
+    margin: 0 auto;
+    width: 412px;
+    height: 600px;
+    top: 15%;
     left: 35.62%;
     right: 35.62%;
+    bottom: 24%;
+    overflow: scroll;
 }
 
 .title {
@@ -90,10 +92,53 @@
 
 .searchbarspan {
     position: sticky;
-    max-width: 412px;
+    width: 412px;
     height: 1px;
-    margin-top: 12px;
+    margin: 12px 0 15px;
     background: #9A9A9A;
     border-radius: 1px;
     transform: matrix(1, 0, 0, -1, 0, 0);
+}
+
+/* List */
+.list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.listItem {
+    background-color: #282E3C;
+    display: flex;
+    margin: 8px 0;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.schoolLetter {
+    background: linear-gradient(127.55deg, #0224D9 -44.16%, #04002B 74.85%);
+    font-weight: 600;
+    font-size: 32px;
+    line-height: 48px;
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    padding-top: 3px;
+}
+
+.schoolText { margin-left: 15px }
+
+.schoolName {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 3px;
+}
+
+.county {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0;
 }
