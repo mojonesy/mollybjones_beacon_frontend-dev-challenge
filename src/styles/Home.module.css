@@ -166,3 +166,33 @@
     line-height: 21px;
     margin: 0;
 }
+
+/* Error Modal */
+.errorModal {
+    position: fixed;
+    z-index: 10;
+    top: 25%;
+    left: 35%;
+    width: 420px;
+    height: 100px;
+    background-color: rgba(40, 46, 60, 0.75);
+    filter: drop-shadow(0.25em 0.5em 0.25em #28017D);
+    border-radius: 25px;
+    border: 2px solid #28017D;
+}
+
+.closeModalBtn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    scale: 1.5;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.errorModalText {
+    position: relative;
+    top: 38%;
+    left: 10%;
+}
