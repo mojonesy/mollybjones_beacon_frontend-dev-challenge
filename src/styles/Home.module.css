@@ -48,7 +48,7 @@
     color: #FFFFFF;
 }
 
-.main {
+.heading {
     position: absolute;
     margin: 0 auto;
     width: 412px;
@@ -57,7 +57,6 @@
     left: 35.62%;
     right: 35.62%;
     bottom: 24%;
-    overflow: scroll;
 }
 
 .title {
@@ -98,19 +97,32 @@
 }
 
 .searchbarspan {
-    position: sticky;
     width: 412px;
     height: 1px;
     margin: 12px 0 15px;
     background: #9A9A9A;
     border-radius: 1px;
-    transform: matrix(1, 0, 0, -1, 0, 0);
 }
 
+
 /* List */
+.mainListContainer {
+    position: absolute;
+    margin: 0 auto;
+    width: 412px;
+    height: 470px;
+    top: 220px;
+    left: 35.62%;
+    right: 35.62%;
+    bottom: 24%;
+    overflow: hidden;
+}
+
 .list {
     list-style: none;
     padding-left: 0;
+    height: 600px;
+    overflow: auto;
 }
 
 .listItem {
@@ -119,6 +131,11 @@
     margin: 8px 0;
     padding: 10px;
     border-radius: 20px;
+}
+
+.listItem:hover {
+    background-color: #161921;
+    transition: 100ms ease-in-out
 }
 
 .schoolLetter {
