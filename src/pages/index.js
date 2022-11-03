@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styles from '../styles/Home.module.css'
 import Logo from '../assets/Logo';
 import SearchBar from '../components/SearchBar';
@@ -18,6 +19,19 @@ export async function getStaticProps() {
 /* Home component */
 export default function Home({ schools }) {
 
+  const [query, setQuery] = useState('');
+  const [school, setSchool] = useState([]);
+
+  const handleChange = ({ target }) => {
+    setQuery(target.value);
+  }
+
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      console.log(query);
+    }
+  }
+
   return (
     <div>
       {/* Logo */}
@@ -29,7 +43,12 @@ export default function Home({ schools }) {
       </div>
 
       {/* Search */}
-      <SearchBar styles={styles} />
+      <SearchBar 
+        styles={styles}
+        query={query}
+        handleChange={handleChange}
+        handleKeyDown={handleKeyDown} 
+      />
 
       <div className={styles.mainListContainer}>
         {/* List */}
