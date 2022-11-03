@@ -79,7 +79,10 @@
     height: 15px;
 }
 
-.searchtext {
+.searchText {
+    background-color: transparent;
+    border: none;
+    width: 100%;
     font-family: 'Poppins';
     font-style: normal;
     font-weight: 400;
@@ -88,6 +91,10 @@
     padding-left: 12px;
     align-items: center;
     color: #9A9A9A;
+}
+
+.searchText:focus {
+    outline: none;
 }
 
 .searchbarspan {
