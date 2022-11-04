@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css'
 import Logo from '../assets/Logo';
 import SearchBar from '../components/SearchBar';
@@ -6,25 +6,30 @@ import ErrorModal from '../components/ErrorModal';
 
 
 /* fetch data */
-export async function getStaticProps() {
-  const res = await fetch('https://api.sendbeacon.com/team/schools');
-  const schools = await res.json();
+// export async function getStaticProps() {
+//   const res = await fetch('https://api.sendbeacon.com/team/schools');
+//   const schools = await res.json();
 
-  return {
-    props: {
-      schools,
-    },
-  }
-}
-
+//   return {
+//     props: {
+//       schools,
+//     },
+//   }
+// }
 
 
 /* Home component */
-export default function Home({ schools }) {
+export default function Home() {
+  const [schools, setSchools] = useState([]);
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [query, setQuery] = useState('');
-  const [school, setSchool] = useState([]);
+
+  useEffect(() => {
+    const res = fetch('https://api.sendbeacon.com/team/schools');
+    const { schools } = res.json();
+    setSchools(schools);
+  }, []);
 
   /* search change handlers */
   const handleChange = ({ target }) => {
@@ -32,7 +37,7 @@ export default function Home({ schools }) {
   }
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === 'Return') {
-      const found = schools.schools.filter((school) => {
+      schools.schools.filter((school) => {
         if (school.name.includes(query)) {
           setSchool(school.name);
         } else {
@@ -75,7 +80,7 @@ export default function Home({ schools }) {
       <div className={styles.mainListContainer}>
         {/* List */}
           <ul className={styles.list}>
-            {schools.schools.map((school) => (
+            {schools.map((school) => (
               <li key={school.id} className={styles.listItem}>
                 <div className={styles.schoolLetter}>
                   <p>{school.name.slice(0, 1)}</p>
