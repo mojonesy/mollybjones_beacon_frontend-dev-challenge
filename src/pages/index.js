@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.css'
 import Logo from '../assets/Logo';
 import SearchBar from '../components/SearchBar';
 import ErrorModal from '../components/ErrorModal';
+import useGeoLocation from '../utils/useGeoLocation';
 
 
 /* fetch data */
@@ -25,6 +26,9 @@ export default function Home() {
   const [showModal, setShowModal] = useState(false);
   const [query, setQuery] = useState('');
 
+  const location = useGeoLocation();
+
+  
   useEffect(() => {
     const res = fetch('https://api.sendbeacon.com/team/schools');
     const { schools } = res.json();
