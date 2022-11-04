@@ -28,11 +28,15 @@ export default function Home() {
 
   const location = useGeoLocation();
 
-  
+
   useEffect(() => {
-    const res = fetch('https://api.sendbeacon.com/team/schools');
-    const { schools } = res.json();
-    setSchools(schools);
+    async function loadSchools() {
+      const res = await fetch('https://api.sendbeacon.com/team/schools');
+      const { schools } = await res.json();
+      setSchools(schools);
+    }
+
+    loadSchools();
   }, []);
 
   /* search change handlers */
