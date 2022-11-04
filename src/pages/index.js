@@ -22,6 +22,11 @@ import useGeoLocation from '../utils/useGeoLocation';
 /* Home component */
 export default function Home() {
   const [schools, setSchools] = useState([]);
+  const [showSchools, setShowSchools] = useState(true);
+
+  const [singleSchool, setSingleSchool] = useState({});
+  const [showSingleSchool, setShowSingleSchool] = useState(false);
+
   const [error, setError] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [query, setQuery] = useState('');
@@ -34,6 +39,7 @@ export default function Home() {
       const res = await fetch('https://api.sendbeacon.com/team/schools');
       const { schools } = await res.json();
       setSchools(schools);
+      setShowSchools(true);
     }
 
     loadSchools();
@@ -45,14 +51,19 @@ export default function Home() {
   }
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' || e.key === 'Return') {
-      schools.schools.filter((school) => {
+      
+      schools.filter((school) => {
         if (school.name.includes(query)) {
-          setSchool(school.name);
+          setShowSchools(false);
+          setSingleSchool(school);
+          setShowSingleSchool(true);
         } else {
           setError('School not found. Try another search.');
           setShowModal(true);
         }
       });
+    } else {
+      setShowSchools(true);
     }
   }
 
@@ -82,11 +93,13 @@ export default function Home() {
           error={error}
           setError={setError}
           setShowModal={setShowModal}
+          setShowSchools={setShowSchools}
         />
       } 
 
       <div className={styles.mainListContainer}>
         {/* List */}
+          {showSchools &&
           <ul className={styles.list}>
             {schools.map((school) => (
               <li key={school.id} className={styles.listItem}>
@@ -100,6 +113,21 @@ export default function Home() {
               </li>
             ))}
           </ul>
+          }
+
+          {showSingleSchool &&
+            <div className={styles.list}>
+              <div key={singleSchool.id} className={styles.listItem}>
+                <div className={styles.schoolLetter}>
+                  <p>{singleSchool.name.slice(0, 1)}</p>
+                </div>
+                <div className={styles.schoolText}>
+                  <p className={styles.schoolName}>{singleSchool.name}</p>
+                  <p className={styles.county}>{singleSchool.county}</p>
+                </div>
+              </div>
+            </div>
+          }
       </div>
     </div>
   )
