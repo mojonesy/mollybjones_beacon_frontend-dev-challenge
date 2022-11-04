@@ -1,6 +1,6 @@
 import { Icon } from '@iconify/react';
 
-function ErrorModal({ styles, error, setError, setShowModal }) {
+function ErrorModal({ styles, error, setError, setShowModal, setShowSchools }) {
     const handleClick = () => {
         setError(null);
         setShowModal(false);
