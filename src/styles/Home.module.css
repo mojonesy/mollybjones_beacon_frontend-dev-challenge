@@ -51,7 +51,7 @@
 .heading {
     position: absolute;
     margin: 0 auto;
-    width: 412px;
+    max-width: 412px;
     height: 600px;
     top: 15%;
     left: 35.62%;
@@ -97,7 +97,7 @@
 }
 
 .searchbarspan {
-    width: 412px;
+    max-width: 412px;
     height: 1px;
     margin: 12px 0 15px;
     background: #9A9A9A;
@@ -109,7 +109,7 @@
 .mainListContainer {
     position: absolute;
     margin: 0 auto;
-    width: 412px;
+    max-width: 412px;
     height: 470px;
     top: 220px;
     left: 35.62%;
@@ -173,7 +173,7 @@
     z-index: 10;
     top: 25%;
     left: 35%;
-    width: 420px;
+    max-width: 420px;
     height: 100px;
     background-color: rgba(40, 46, 60, 0.75);
     filter: drop-shadow(0.25em 0.5em 0.25em #28017D);
@@ -195,4 +195,21 @@
     position: relative;
     top: 38%;
     left: 10%;
+}
+
+@media (max-width: 1060px) {
+    .heading,
+    .title,
+    .mainListContainer,
+    .list,
+    .list-item,
+    .searchbarspan,
+    .errorModal {
+        min-width: 300px;
+        margin: 0;
+    }
+
+    .mainListContainer {
+        top: 250px;
+    }
 }
