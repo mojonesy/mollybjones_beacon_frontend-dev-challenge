@@ -173,7 +173,7 @@
     z-index: 10;
     top: 25%;
     left: 35%;
-    max-width: 420px;
+    width: 420px;
     height: 100px;
     background-color: rgba(40, 46, 60, 0.75);
     filter: drop-shadow(0.25em 0.5em 0.25em #28017D);
@@ -203,13 +203,17 @@
     .mainListContainer,
     .list,
     .list-item,
-    .searchbarspan,
-    .errorModal {
+    .searchbarspan {
         min-width: 300px;
         margin: 0;
     }
 
     .mainListContainer {
         top: 250px;
+    }
+
+    .errorModal {
+        width: 300px;
+        height: 150px;
     }
 }
